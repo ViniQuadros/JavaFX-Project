@@ -16,12 +16,13 @@ public class ListController {
 
     @FXML
     void addListItem(ActionEvent event) {
-
+        btnAdd.getItems().add(item.getText()); // nao sei se assim funciona p adicionar qualquer tipo de item
     }
 
     @FXML
     void deleteListItem(ActionEvent event) {
-
+        int selectedID = btnAdd.getSelectionModel().getSelectedIndex();
+        btnAdd.getItems().remove(selectedID);
     }
 
 }
