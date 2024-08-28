@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxproject.ListController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -51,15 +51,15 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="236.0" layoutY="128.0" />
+            <TextField fx:id="txtSearch" layoutX="236.0" layoutY="128.0" />
             <Label layoutX="286.0" layoutY="95.0" text="Search">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ListView layoutY="175.0" prefHeight="226.0" prefWidth="640.0" />
-            <Button layoutX="14.0" layoutY="141.0" mnemonicParsing="false" text="Add" />
-            <Button layoutX="61.0" layoutY="141.0" mnemonicParsing="false" text="Delete" />
+            <ListView fx:id="listView" editable="true" layoutY="175.0" prefHeight="226.0" prefWidth="640.0" />
+            <Button fx:id="btnAdd" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" onAction="#addListItem" text="Add" />
+            <Button fx:id="btnDelete" layoutX="61.0" layoutY="141.0" mnemonicParsing="false" onAction="#deleteListItem" text="Delete" />
             <MenuButton layoutX="122.0" layoutY="141.0" mnemonicParsing="false" text="Sort By">
               <items>
                 <MenuItem mnemonicParsing="false" text="Alphabetical" />
