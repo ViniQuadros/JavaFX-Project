@@ -1,5 +1,6 @@
 package javafxproject;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class ListController implements Initializable{
+public class ListController implements Initializable {
 
     @FXML
     private Button btnAdd;
@@ -28,14 +29,17 @@ public class ListController implements Initializable{
     private ObservableList<String> obsList;
 
     @FXML
-    private TextField txtSearch;
+    private TextField txtAdd;
 
     @FXML
-    void addListItem(ActionEvent event) {
-        String item1 = "Teste";
+    void addListItem(ActionEvent event) throws IOException {
+        String item = txtAdd.getText();
 
-        //Add the string to the Array List
-        list.add(item1);
+        if (!item.isEmpty()) {
+            //Add the string to the Array List
+            list.add(item);
+        }
+
         //Covert ArrayList to Observable list
         obsList = FXCollections.observableArrayList(list);
 
@@ -45,12 +49,25 @@ public class ListController implements Initializable{
 
     @FXML
     void deleteListItem(ActionEvent event) {
+        //Get index of the selected item in the list
+        final int selectedIdx = listView.getSelectionModel().getSelectedIndex();
 
+        //Check if the selected index is the last
+        if (selectedIdx != -1) {
+          final int newSelectedIdx =
+            (selectedIdx == listView.getItems().size() - 1)
+               ? selectedIdx - 1
+               : selectedIdx;
+ 
+          listView.getItems().remove(selectedIdx);
+          listView.getSelectionModel().select(newSelectedIdx);
+          list.remove(selectedIdx);
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        
-    }
+
+    }      
 }
