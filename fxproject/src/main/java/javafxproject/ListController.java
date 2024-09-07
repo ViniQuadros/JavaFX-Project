@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
 public class ListController implements Initializable {
@@ -32,6 +33,9 @@ public class ListController implements Initializable {
     private TextField txtAdd;
 
     @FXML
+    private MenuItem sortAlphabetical;
+
+    @FXML
     void addListItem(ActionEvent event) throws IOException {
         String item = txtAdd.getText();
 
@@ -45,6 +49,8 @@ public class ListController implements Initializable {
 
         //Add Observable list to list view
         listView.setItems(obsList);
+
+        txtAdd.clear();
     }
 
     @FXML
@@ -63,6 +69,11 @@ public class ListController implements Initializable {
           listView.getSelectionModel().select(newSelectedIdx);
           list.remove(selectedIdx);
         }
+    }
+
+    @FXML
+    void sortAlphabetical(ActionEvent event) {
+        listView.setItems(obsList.sorted());
     }
 
     @Override

@@ -62,7 +62,7 @@
             <Button fx:id="btnDelete" layoutX="61.0" layoutY="141.0" mnemonicParsing="false" onAction="#deleteListItem" text="Delete" />
             <MenuButton layoutX="122.0" layoutY="141.0" mnemonicParsing="false" text="Sort By">
               <items>
-                <MenuItem mnemonicParsing="false" text="Alphabetical" />
+                <MenuItem fx:id="sortAlphabetical" mnemonicParsing="false" onAction="#sortAlphabetical" text="Alphabetical" />
               </items>
             </MenuButton>
          </children>
