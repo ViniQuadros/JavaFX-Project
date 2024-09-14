@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldListCell;
+import javafx.util.converter.DefaultStringConverter;
 
 public class ListController implements Initializable {
 
@@ -79,6 +81,12 @@ public class ListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-
+        listView.setEditable(true);
+        listView.setCellFactory(TextFieldListCell.forListView(new DefaultStringConverter()));
+        listView.setOnEditCommit(event -> {
+            int index = event.getIndex();
+            String newValue = event.getNewValue();
+            obsList.set(index, newValue);
+        });
     }      
 }
