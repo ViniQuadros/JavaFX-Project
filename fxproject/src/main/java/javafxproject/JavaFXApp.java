@@ -29,7 +29,7 @@ public class JavaFXApp extends Application {
         });
         scene.setOnKeyReleased(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                System.out.println(listController.getTxtAdd());
+                listController.getTxtAdd();
             }
         });
 
@@ -41,5 +41,4 @@ public class JavaFXApp extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
